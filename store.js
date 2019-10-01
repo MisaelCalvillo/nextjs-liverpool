@@ -15,7 +15,7 @@ export const actionTypes = {
 }
 
 // REDUCER
-export const reducer = (state = initialState, action) {
+export const reducer = (state = initialState, action) => {
   switch(action.type) {
     case actionTypes.TICK: 
       return {
@@ -24,8 +24,19 @@ export const reducer = (state = initialState, action) {
         light: !!action.light
       }
     case actionTypes.INCREMENTO:
+      return Object.assign({}, state, {
+        count: state.count + 1
+      })
     case actionTypes.DECREMENTO:
+      return {
+        ...state,
+        count: state.count - 1
+      }
     case actionTypes.RESET:
+      return {
+        ...state,
+        count: initialState.count
+      }
     default: return state;
   }
 }
@@ -37,6 +48,26 @@ export const serverRenderClock = () => {
     light: false, 
     ts: Date.now() 
   };
+}
+
+export const startClock = () => {
+  return {
+    type: actionTypes.TICK,
+    light: true,
+    ts: Date.now()
+  }
+}
+
+export const incrementCount = () => {
+  return { type: actionTypes.INCREMENTO }
+}
+
+export const decrementCount = () => {
+  return { type: actionTypes.DECREMENTO }
+}
+
+export const resetCount = () => {
+  return { type: actionTypes.RESET }
 }
 
 export function initializeStore (initialState = {}) {
