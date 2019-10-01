@@ -2,7 +2,9 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { incrementCount, decrementCount, resetCount } from '../store';
 
-const countSelector = (state) => state.count;
+const countSelector = (state) => {
+  return state.count;
+};
 
 const useCounter = () => {
   const dispatch = useDispatch();
@@ -13,7 +15,7 @@ const useCounter = () => {
     dispatch(decrementCount());
   }
   const reset = () => {
-    dispatch(reset());
+    dispatch(resetCount());
   }
 
   return { increment, decrement, reset };

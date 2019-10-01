@@ -70,10 +70,10 @@ export const resetCount = () => {
   return { type: actionTypes.RESET }
 }
 
-export function initializeStore (initialState = {}) {
+export function initializeStore (state = initialState) {
   return createStore(
     reducer,
-    initialState, 
+    state, 
     composeWithDevTools(applyMiddleware())
   )
 }
