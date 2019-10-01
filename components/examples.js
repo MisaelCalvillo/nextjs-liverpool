@@ -11,7 +11,7 @@ const clockSelector = state => ({
 function Examples () {
   const { lastUpdate, light } = useSelector(clockSelector, shallowEqual)
   return (
-    <div>
+    <div className="lista">
       <Clock lastUpdate={lastUpdate} light={light} />
       <Counter />
     </div>
